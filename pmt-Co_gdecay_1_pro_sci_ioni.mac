@@ -1,0 +1,49 @@
+# PMT - Co G4 Decay
+
+/run/verbose      0
+/control/verbose  0
+/tracking/verbose 0
+/grdm/verbose     0
+
+/run/initialize
+
+# Output folder
+/LUXSim/io/outputDir .
+/LUXSim/io/updateFrequency 10
+/LUXSim/physicsList/useOpticalProcesses true
+
+/LUXSim/detector/select LZDetector
+
+/LUXSim/detector/printEFields
+
+/LUXSim/detector/update
+
+/LUXSim/materials/LXeAbsorption 0 m
+/LUXSim/materials/GXeAbsorption 0 m
+
+
+/LUXSim/detector/recordLevel LiquidXenonTarget 2
+/LUXSim/detector/recordLevelOptPhot LiquidXenonTarget 3
+/LUXSim/detector/recordLevelThermElec LiquidXenonTarget 3
+
+
+# Co60 decay
+
+#/LUXSim/source/set Top_PMT_Window    SingleDecay_60_27 1.e-3 Bq 
+#/LUXSim/source/set Bottom_PMT_Window_001 SingleParticle_gamma 1 Bq 1*MeV
+
+#/gps/ion      54 131
+#/gps/energy   10 keV
+/gps/particle  gamma
+/gps/energy   5 keV
+/gps/position 0 0 75 cm
+/gps/ang/type iso
+
+# Output .bin files
+
+/LUXSim/io/outputName lz_pmtCo_gdecay_1mBq_1e6_ele_5KeV_ioi_sci_7Jan_
+/LUXSim/randomSeed 100012
+/LUXSim/physicsList/driftElecAttenuation 1.5 m
+/LUXSim/beamOn 10000
+
+exit
